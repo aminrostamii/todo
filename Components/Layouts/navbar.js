@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaBars, FaTimes, FaTasks, FaUser } from "react-icons/fa";
+import { useRouter } from "next/router";
 const Cookies = require("js-cookie");
 
 const Header = () => {
@@ -8,6 +9,8 @@ const Header = () => {
   const [accessToken, setAccessToken] = useState(null);
   const [isClient, setIsClient] = useState(false);
   const [activeSection, setActiveSection] = useState("/");
+
+  const Router = useRouter();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -25,8 +28,9 @@ const Header = () => {
         alert(data.message);
         Cookies.remove("Access_Token");
         localStorage.removeItem("user");
-        console.log("Signed out successfully");
-        window.location.reload();
+        Cookies.remove("userId");
+        // console.log("Signed out successfully");
+        Router.push("/"); // Redirect to home page
       } else {
         alert(`Error: ${data.message}`);
       }

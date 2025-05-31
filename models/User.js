@@ -11,10 +11,10 @@ const TodoSchema = new Schema(
       default: "medium",
     },
   },
-  { timestamps: true } // زمان ایجاد و بروزرسانی را به صورت خودکار اضافه می‌کند
+  { timestamps: true }
 );
 
-// User Schema with validation
+// User Schema with validation and role
 const UserSchema = new Schema(
   {
     fullName: {
@@ -24,7 +24,7 @@ const UserSchema = new Schema(
     email: {
       type: String,
       required: [true, "Email is required"],
-      unique: true, // اطمینان از یکتایی ایمیل
+      unique: true,
     },
     password: {
       type: String,
@@ -35,14 +35,17 @@ const UserSchema = new Schema(
       required: [true, "Phone number is required"],
     },
     todos: [TodoSchema],
-    default: []
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt fields for the User
+    timestamps: true,
   }
 );
 
-// Check if the model already exists to avoid redefinition
 const User = models?.User || model("User", UserSchema);
 
 export default User;

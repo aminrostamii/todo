@@ -3,6 +3,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import useSWR, { mutate } from "swr";
 import { motion } from "framer-motion";
+import * as cookie from 'cookie';
 
 import ModalAddTodo from "@/Components/Modules/TodoFormModal";
 import TodoList from "@/Components/Modules/TodoList";
@@ -268,3 +269,26 @@ const TodoPage = () => {
 };
 
 export default TodoPage;
+
+export async function getServerSideProps(context) {
+  const { req } = context;
+
+  // Parse the cookies from the request headers
+  const cookies = cookie.parse(req.headers.cookie || '');
+  const accessToken = cookies.Access_Token;
+
+  if (!accessToken) {
+    // If no access token is found, redirect to the login page
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  // If the user is authenticated, allow access to the page
+  return {
+    props: {}, // You can pass any props you need here
+  };
+}

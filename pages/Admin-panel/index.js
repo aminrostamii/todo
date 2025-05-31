@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const AdminPanel = () => {
+  const router = useRouter();
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -15,9 +17,28 @@ const AdminPanel = () => {
     priority: "medium",
   });
 
+  const [authorized, setAuthorized] = useState(null); // null for loading state
+
   useEffect(() => {
-    fetchUsers();
+    checkRole();
   }, []);
+
+  const checkRole = async () => {
+    try {
+      const response = await axios.get("/api/auth/roleChecking");
+      if (response.data.role === "admin") {
+        setAuthorized(true);
+        fetchUsers();
+      } else {
+        setAuthorized(false);
+        router.push("/unauthorized"); // or show a message instead
+      }
+    } catch (error) {
+      console.error("Role check failed:", error);
+      setAuthorized(false);
+      router.push("/unauthorized");
+    }
+  };
 
   const fetchUsers = async () => {
     try {
@@ -76,7 +97,15 @@ const AdminPanel = () => {
     }
   };
 
-  if (loading) return <div className="text-center text-gray-300">Loading...</div>;
+  if (authorized === null || loading)
+    return <div className="text-center text-gray-300">Loading...</div>;
+
+  if (authorized === false)
+    return (
+      <div className="text-center text-red-500 mt-10 text-lg">
+        You are not authorized to view this page.
+      </div>
+    );
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-200 p-6">
