@@ -1,40 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# ✅ Todo App with Authentication & Email Sending
 
-## Getting Started
+## 🇮🇷 فارسی
 
-First, run the development server:
+این پروژه یک اپلیکیشن مدیریت تسک (Todo App) است که با استفاده از **Next.js** و **React.js** ساخته شده و امکانات کامل از جمله ثبت‌نام، ورود، داشبورد کاربر، مدیریت تسک‌ها و ارسال لیست آن‌ها به ایمیل کاربر را دارد.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🚀 امکانات
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- 🔐 احراز هویت با JWT (ورود و ثبت‌نام)
+- 👤 داشبورد شخصی برای هر کاربر
+- ➕ افزودن تسک
+- 📝 ویرایش تسک‌ها
+- ❌ حذف تسک‌ها
+- 📩 ارسال لیست تسک‌ها به ایمیل کاربر
+- 🎨 رابط کاربری حرفه‌ای با Tailwind CSS و SweetAlert2
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+### 🛠️ تکنولوژی‌ها
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| تکنولوژی             | توضیح |
+|----------------------|-------|
+| **Next.js**          | فریم‌ورک SSR/SSG برای React |
+| **React.js**         | ساخت رابط کاربری |
+| **Tailwind CSS**     | طراحی سریع و سبک |
+| **SweetAlert2**      | نمایش اعلان‌های زیبا |
+| **SWR**              | واکشی داده بهینه |
+| **js-cookie**        | ذخیره و مدیریت توکن |
+| **Nodemailer**       | ارسال ایمیل از طریق SMTP |
+| **JWT**              | احراز هویت توکنی |
+| **React Hook Form**  | مدیریت فرم‌ها |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🇬🇧 English
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+This project is a **Todo App** built using **Next.js** and **React.js**, with full features such as user authentication, personal dashboard, task management, and email sending of tasks.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### 🚀 Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 🔐 Authentication with JWT (login & signup)
+- 👤 Personal dashboard per user
+- ➕ Add tasks
+- 📝 Edit tasks
+- ❌ Delete tasks
+- 📩 Send all tasks to user's email
+- 🎨 Beautiful UI with Tailwind CSS and SweetAlert2
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+---
+
+### 🛠️ Technologies
+
+| Technology           | Description |
+|----------------------|-------------|
+| **Next.js**          | React framework with SSR & API Routes |
+| **React.js**         | Frontend UI library |
+| **Tailwind CSS**     | Utility-first CSS framework |
+| **SweetAlert2**      | Modern alert messages |
+| **SWR**              | Data fetching library |
+| **js-cookie**        | Token storage in cookies |
+| **Nodemailer**       | Sending email via SMTP |
+| **JWT**              | Token-based authentication |
+| **React Hook Form**  | Form management library |
